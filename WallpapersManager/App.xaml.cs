@@ -1,6 +1,9 @@
 ﻿using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
+using Core.Interfaces.Services;
+using Core.Services;
+using Splat;
 using WallpapersManager.ViewModels;
 using WallpapersManager.Views;
 
@@ -10,6 +13,8 @@ namespace WallpapersManager
     {
         public override void Initialize()
         {
+            Locator.CurrentMutable.RegisterLazySingleton<IUnsplashApiService>(() => new UnsplashApiService());
+
             AvaloniaXamlLoader.Load(this);
         }
 
